@@ -1,11 +1,11 @@
-import Todo from "./Todo";
-import Speeddial from "./Speeddial";
+import Todo from "./pages/Todo";
+import SpeedDial from "./molecules/SpeedDial";
 
 const App = () => {
   return (
     <div className="App">
       <Todo />
-      <Speeddial />
+      <SpeedDial />
     </div>
   );
 };
