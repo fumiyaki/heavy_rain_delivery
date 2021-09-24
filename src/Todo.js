@@ -39,20 +39,18 @@ if("geolocation" in navigator){
 export default function Todo() {
   const mapOptions = {
     title: {
-      text: "d",
+      text: "",
     },
-    colorAxis: {
-      min: 0,
-      stops: [
-        [0, "#EFEFFF"],
-        [0.67, "#4444FF"],
-        [1, "#000022"],
-      ],
-    },
+    responsive: {
+      rules: [{
+          condition: {
+              maxWidth: 500
+          },
+        }]},
     series: [
       {
         mapData: mapData,
-        name: "Norway",
+        name: "単価",
         data: [],
       },
     ],
@@ -60,7 +58,6 @@ export default function Todo() {
 
   return (
     <div>
-      <h2>Tokyo 23Cities</h2>
       <HighchartsReact
         options={mapOptions}
         constructorType = { 'mapChart' }
