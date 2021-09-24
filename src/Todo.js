@@ -1,6 +1,6 @@
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
-import mapData from "./data/alljapan.json";
+import mapData from "./data/tokyo23.json";
 import highchartsMap from "highcharts/modules/map";
 highchartsMap(Highcharts);
 export default function Todo() {
@@ -27,7 +27,7 @@ export default function Todo() {
 
   return (
     <div>
-      <h2>Highcharts</h2>
+      <h2>Tokyo 23Cities</h2>
       <HighchartsReact
         options={mapOptions}
         constructorType = { 'mapChart' }
