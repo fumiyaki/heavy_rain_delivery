@@ -43,7 +43,36 @@ if ("geolocation" in navigator) {
 }
 
 export default function Todo() {
+
+
+  function pointsToPath(fromx, fromy, tox, toy, invertArc) {
+    return 'M' + fromx + ',' + fromy + 'L' + tox + ',' + toy;
+}
+
   const mapOptions = {
+    chart: {
+      // events: {
+      //   load: function () {
+      //     this.renderer
+      //       .definition({
+      //         tagName: 'marker',
+      //         id: 'markerArrow',
+      //         refY: 5,
+      //         refX: 9,
+      //         markerWidth: 11,
+      //         markerHeight: 11,
+      //         orient: 'auto',
+      //         children: [{
+      //           tagName: 'path',
+      //           d: 'M 0 0 L 10 5 L 0 10 Z',
+      //           fill: Highcharts.getOptions().colors[3],
+      //           'stroke-width': 1,
+      //           stroke: '#000000'
+      //         }]
+      //       });
+      //   }
+      // }
+    },
     title: {
       text: "",
     },
@@ -93,16 +122,17 @@ export default function Todo() {
         ],
       },
       {
-        type: "mapline",
-        name: "Separators",
-        data: Highcharts.geojson(mapData, "mapline"),
-        nullColor: "gray",
-        showInLegend: false,
-        enableMouseTracking: false,
-      },
+        name: 'London flight routes',
+        type: 'mapline',
+        lineWidth: 2,
+        color: Highcharts.getOptions().colors[3],
+        data: [{
+              id: '13106',
+              path: pointsToPath(342, 206, 243, 207)
+          }]
+      }
     ],
   };
-
   return (
     <div>
       <HighchartsReact
