@@ -1,5 +1,15 @@
 from flask import Flask,render_template,jsonify
 import requests
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
+
+cred = credentials.Certificate('app/uber-cc11f-firebase-adminsdk-v8vj6-9d51966c93.json')
+
+# Initialize the app with a service account, granting admin privileges
+firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://uber-cc11f-default-rtdb.firebaseio.com'
+})
 
 #Flaskオブジェクトの生成
 app = Flask(__name__)
@@ -18,6 +28,9 @@ tokyo_23 = {"千代田区":[139.4513,35.4138],"中央区":[139.4620,35.4015],"�
 ##東極の経度（139.5507）
 ##西極の経度（139.3346）
 
+
+#firebase
+ref = db.reference('users')
 #APIキー
 headers = {
     'X-API-Key': 'ciCs66mDVE6OUlonzEs6R95ouMHi5sV7jiAPV0Hf',
@@ -40,6 +53,9 @@ def get_23ku_weathers():
         )
         response = requests.get('https://wxtech.weathernews.com/api/v1/ss1wx', headers=headers, params=params)
         ku_weathers[ku] = response.json()["wxdata"][0]['srf'][:10]#10時間分取得
+    ref.set(ku_weathers)
+
+
     return ku_weathers
 
 #23区の気象情報を1kmメッシュ単位で取得（400箇所）
