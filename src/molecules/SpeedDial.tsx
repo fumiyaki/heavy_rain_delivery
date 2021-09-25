@@ -8,10 +8,10 @@ import PrintIcon from "@mui/icons-material/Print";
 import ShareIcon from "@mui/icons-material/Share";
 
 const actions = [
-  { icon: <FileCopyIcon />, name: "Copy" },
-  { icon: <SaveIcon />, name: "Save" },
-  { icon: <PrintIcon />, name: "Print" },
-  { icon: <ShareIcon />, name: "Share" },
+  { icon: <FileCopyIcon />, name: "UberEats" },
+  { icon: <SaveIcon />, name: "memue" },
+  { icon: <PrintIcon />, name: "Food Panda" },
+  { icon: <ShareIcon />, name: "Didi food" },
 ];
 
 const SpeedDial = () => {
