@@ -53,10 +53,14 @@ def get_23ku_weathers():
         )
         response = requests.get('https://wxtech.weathernews.com/api/v1/ss1wx', headers=headers, params=params)
         ku_weathers[ku] = response.json()["wxdata"][0]['srf'][:10]#10時間分取得
+    # firebase 登録
     ref.set(ku_weathers)
-
-
     return ku_weathers
+
+################################################################
+# firebaseから引っ張ってくるコード
+ref.get()
+############################################################
 
 #23区の気象情報を1kmメッシュ単位で取得（400箇所）
 @app.route("/get_400_weathers")
