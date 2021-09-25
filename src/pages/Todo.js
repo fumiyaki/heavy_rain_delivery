@@ -1,6 +1,6 @@
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import mapData from "../data/tokyo23.json";
+import mapData from "../data/mapData";
 
 function setLocation(pos) {
   // 緯度・経度を取得
@@ -43,8 +43,8 @@ if ("geolocation" in navigator) {
 export default function Todo() {
 
 
-  function pointsToPath(fromx, fromy, tox, toy, invertArc) {
-    return 'M' + fromx + ',' + fromy + 'L' + tox + ',' + toy;
+  function pointsToPath(from, to,invertArc) {
+    return 'M' + from.plotx + ',' + from.y + 'L' + to.x + ',' + to.y;
 }
 
   const mapOptions = {
@@ -77,7 +77,12 @@ export default function Todo() {
     mapNavigation: {
       enabled: true,
     },
-
+    tooltip: {
+      formatter: function () {
+        console.log(this.point)
+          // return this.point.properties.N03_004
+      }
+  },
     responsive: {
       rules: [
         {
@@ -120,15 +125,33 @@ export default function Todo() {
         ],
       },
       {
-        name: 'London flight routes',
-        type: 'mapline',
-        lineWidth: 2,
-        color: Highcharts.getOptions().colors[3],
+        type: 'mappoint',
+        name: 'Cities',
+        marker: {
+          fillColor: 'white',
+          lineColor: 'black',
+          lineWidth: 10,
+          radius: 3
+      },
+        dataLabels: {
+          color: "#000000",
+          format: 'adssad'
+        },
         data: [{
-              id: '13106',
-              path: pointsToPath(342, 206, 243, 207)
-          }]
-      }
+          name: 'Suginami',
+          path: [139.71781545000002, -35.71605105]
+      }]
+    },
+      // {
+      //   name: 'London flight routes',
+      //   type: 'mapline',
+      //   lineWidth: 2,
+      //   color: Highcharts.getOptions().colors[3],
+      //   data: [{
+      //         id: '13106',
+      //         path: pointsToPath(342, 206, 243, 207)
+      //     }]
+      // }
     ],
   };
   return (
