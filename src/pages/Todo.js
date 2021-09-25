@@ -1,8 +1,6 @@
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import mapData from "../data/tokyo23.json";
-import highchartsMap from "highcharts/modules/map";
-highchartsMap(Highcharts);
 
 function setLocation(pos) {
   // 緯度・経度を取得

@@ -1,10 +1,10 @@
-import Todo from "./pages/Todo";
 import SpeedDial from "./molecules/SpeedDial";
+import Map from "./organisms/Map";
 
 const App = () => {
   return (
     <div className="App">
-      <Todo />
+      <Map />
       <SpeedDial />
     </div>
   );
