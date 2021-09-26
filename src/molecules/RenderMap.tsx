@@ -1,8 +1,11 @@
-import { GoogleMap, HeatmapLayer } from "@react-google-maps/api";
+import { GoogleMap, HeatmapLayer, Marker } from "@react-google-maps/api";
 import { useCallback } from "react";
 import { testData } from "../test";
 
-const RenderMap = () => {
+type Props = {
+  currentLocation: { lat: number; lng: number } | undefined;
+};
+const RenderMap = ({ currentLocation }: Props) => {
   const onLoad = useCallback((map: google.maps.Map) => {}, []);
   let mapDatas = testData.data
     .filter((prefTestData) => prefTestData.length !== 0)
@@ -45,6 +48,15 @@ const RenderMap = () => {
       onLoad={onLoad}
     >
       <HeatmapLayer options={{ radius: 100 }} data={mapDatas} />
+      {currentLocation && (
+        <Marker
+          icon={{
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 7,
+          }}
+          position={currentLocation}
+        />
+      )}
     </GoogleMap>
   );
 };
