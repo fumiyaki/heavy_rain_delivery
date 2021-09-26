@@ -1,42 +1,46 @@
-import * as React from "react";
-import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { createStyles, makeStyles } from "@mui/styles";
 import Chip from "@mui/material/Chip";
+import { makeStyles } from "@mui/styles";
 import { CardActionArea } from "@mui/material";
 
-const useStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      color: "white",
-    },
-    small: {
-      fontSize: "16px",
-    },
-    nocard: {
-      paddingBottom: "0px!important",
-    },
-    number: {
-      color: "white",
-      paddingTop: "12px!important",
-      paddingBottom: "12px!important",
-    },
-    pt: {
-      paddingTop: "16px!important",
-    }
-  })
-);
+type Props = {
+  url: string;
+  name: string;
+  yen: number;
+  img: string;
+  label: string;
+};
 
-export default function Food(props) {
+const useStyles = makeStyles({
+  root: {
+    color: "white",
+  },
+  small: {
+    fontSize: "16px",
+  },
+  nocard: {
+    paddingBottom: "0px!important",
+  },
+  number: {
+    color: "white",
+    paddingTop: "12px!important",
+    paddingBottom: "12px!important",
+  },
+  pt: {
+    paddingTop: "16px!important",
+  },
+});
+
+export default function Food({ img, label, name, url, yen }: Props) {
   const classes = useStyles();
+
   return (
     <div className={classes.pt}>
-      <CardActionArea href={props.url}>
+      <CardActionArea href={url}>
         <Card
           sx={{
             display: "flex",
@@ -50,22 +54,23 @@ export default function Food(props) {
           >
             <CardContent className={classes.nocard} sx={{ flex: "1 0 auto" }}>
               <Typography className={classes.root} component="div" variant="h5">
-                {props.name} <Chip className={classes.root} label={props.label} variant="outlined" />
+                {name}{" "}
+                <Chip
+                  className={classes.root}
+                  label={label}
+                  variant="outlined"
+                />
               </Typography>
               <Typography
                 className={classes.number}
                 component="div"
                 variant="h5"
               >
-                {props.yen} <span className={classes.small}>yen</span>
+                {yen} <span className={classes.small}>yen</span>
               </Typography>
             </CardContent>
           </Box>
-          <CardMedia
-            component="img"
-            sx={{ width: 151 }}
-            image={props.img}
-          />
+          <CardMedia component="img" sx={{ width: 151 }} image={img} />
         </Card>
       </CardActionArea>
     </div>

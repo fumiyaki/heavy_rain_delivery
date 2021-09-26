@@ -1,11 +1,9 @@
-import SpeedDial from "./molecules/SpeedDial";
-import GoogleHeatMap from "./molecules/GoogleHeatMap";
+import Router from "./router/Router";
 
 const App = () => {
   return (
     <div className="App">
-      <GoogleHeatMap />
-      <SpeedDial />
+      <Router />
     </div>
   );
 };
