@@ -82,10 +82,8 @@ def get_23ku_weathers():
 def show_money_locations():
     #Firebaseからデータを取得
     result = ref.get()
-    result = json.loads(result)
-    return result
 
-    for ku in result:
+    for ku in range(1, len(result)):
         ku_name = tokyo_23_ids[ku]
         for i in range(10):
             #体感インデックスを2つに分ける
