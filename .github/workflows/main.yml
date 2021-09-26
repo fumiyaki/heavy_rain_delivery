@@ -1,0 +1,16 @@
+
+name: Deploy to Firebase
+
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Deploy to firebase
+        id: firebase-deploy
+        uses: mohammed-atif/firebase-publish-react@v1.0
+        with:
+          firebase-token: ${{ secrets.FIREBASE_TOKEN }}

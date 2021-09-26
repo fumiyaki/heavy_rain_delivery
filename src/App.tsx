@@ -1,10 +1,10 @@
 import SpeedDial from "./molecules/SpeedDial";
-import Todo from "./pages/Todo";
+import GoogleHeatMap from "./molecules/GoogleHeatMap";
 
 const App = () => {
   return (
     <div className="App">
-      <Todo />
+      <GoogleHeatMap />
       <SpeedDial />
     </div>
   );
