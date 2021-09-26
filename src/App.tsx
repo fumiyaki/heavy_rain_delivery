@@ -1,9 +1,9 @@
-import Todo from "./Todo";
+import GoogleHeatMap from "./molecules/GoogleHeatMap";
 
 const App = () => {
   return (
     <div className="App">
-      <Todo />
+      <GoogleHeatMap />
     </div>
   );
 };
