@@ -4,9 +4,11 @@ import RenderMap from "./RenderMap";
 
 type Props = {
   apiKey: string;
+  uber: boolean;
+  headache: boolean;
 };
 
-const GoogleMapContainer = ({ apiKey }: Props) => {
+const GoogleMapContainer = ({ apiKey, uber, headache }: Props) => {
   const [currentLocation, setCurrentLocation] =
     useState<{ lat: number; lng: number }>();
   const { isLoaded, loadError } = useLoadScript({
@@ -34,7 +36,11 @@ const GoogleMapContainer = ({ apiKey }: Props) => {
   }
 
   return isLoaded ? (
-    <RenderMap currentLocation={currentLocation}></RenderMap>
+    <RenderMap
+      currentLocation={currentLocation}
+      uber={uber}
+      headache={headache}
+    ></RenderMap>
   ) : (
     <div>Loading...</div>
   );
